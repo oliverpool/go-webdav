@@ -1,4 +1,10 @@
-# go-webdav
+# (temporary?) fork of go-webdav
+
+To use this fork, run:
+```
+go mod edit -replace=github.com/emersion/go-webdav=github.com/oliverpool/go-webdav@main
+go mod tidy
+```
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/emersion/go-webdav.svg)](https://pkg.go.dev/github.com/emersion/go-webdav)
 
