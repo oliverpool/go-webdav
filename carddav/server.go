@@ -513,6 +513,12 @@ func (b *backend) propFindAddressBook(ctx context.Context, propfind *internal.Pr
 				},
 			}, nil
 		},
+		internal.CurrentUserPrivilegeSetName: func(*internal.RawXMLValue) (interface{}, error) {
+			if ab.ReadOnly {
+				return &internal.CurrentUserPrivilegeSetReadOnly, nil
+			}
+			return &internal.CurrentUserPrivilegeSetReadWrite, nil
+		},
 	}
 
 	if ab.Name != "" {
@@ -578,6 +584,12 @@ func (b *backend) propFindAddressObject(ctx context.Context, propfind *internal.
 			}
 
 			return &addressDataResp{Data: buf.Bytes()}, nil
+		},
+		internal.CurrentUserPrivilegeSetName: func(*internal.RawXMLValue) (interface{}, error) {
+			if ao.ReadOnly {
+				return &internal.CurrentUserPrivilegeSetReadOnly, nil
+			}
+			return &internal.CurrentUserPrivilegeSetReadWrite, nil
 		},
 	}
 
