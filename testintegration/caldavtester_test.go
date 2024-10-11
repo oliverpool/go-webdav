@@ -28,7 +28,19 @@ func TestCardDAV(t *testing.T) {
 	}
 	go s.Serve(ln)
 
-	f, err := os.Create("carddav.log")
+	var debug bool
+	for _, a := range os.Args {
+		if strings.HasPrefix(a, "-test.run=") {
+			debug = true
+			break
+		}
+	}
+
+	logFile := "carddav.log"
+	if debug {
+		logFile = "debug.log"
+	}
+	f, err := os.Create(logFile)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -39,13 +51,6 @@ func TestCardDAV(t *testing.T) {
 		}
 	})
 
-	var debug bool
-	for _, a := range os.Args {
-		if strings.HasPrefix(a, "-test.run=") {
-			debug = true
-			break
-		}
-	}
 	args := []string{
 		"run", "--offline", "--quiet", "../", "--",
 		"testcaldav.py",
