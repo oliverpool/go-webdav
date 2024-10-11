@@ -1,0 +1,3 @@
+[submodule "caldavtester/ccs-caldavtester"]
+	path = caldavtester/ccs-caldavtester
+	url = https://github.com/apple/ccs-caldavtester

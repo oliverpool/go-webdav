@@ -1,0 +1,34 @@
+Starting tests
+
+File 1 of 31
+
+scripts.tests.CardDAV.mkcol                                 
+  Suite: OPTIONS header                                     
+    Test: 1                                                  [IGNORED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+  Suite: MKCOL with body                                    
+    Test: 1                                                   [FAILED]
+
+======================================================================
+[FAILED]
+Failed Verifier: header
+        Missing Response Header: Allow
+
+scripts.tests.CardDAV.mkcol/OPTIONS header/2
+======================================================================
+[FAILED]
+Failed Verifier: header
+        Missing Response Header: Allow
+
+scripts.tests.CardDAV.mkcol/OPTIONS header/3
+======================================================================
+[FAILED]
+Failed Verifier: statusCode
+        HTTP Status Code Wrong (expected 403): 200
+
+scripts.tests.CardDAV.mkcol/MKCOL with body/1
+----------------------------------------------------------------------
+Ran 4 tests in 0.005s
+
+FAILED (ok=0, ignored=1, failed=3, errors=0)
