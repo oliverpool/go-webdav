@@ -1,0 +1,400 @@
+Starting tests
+
+File 1 of 31
+
+scripts.tests.CardDAV.mkcol                                 
+  Suite: OPTIONS header                                     
+    Test: 1                                                  [IGNORED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+  Suite: MKCOL with body                                    
+    Test: 1                                                   [FAILED]
+
+File 2 of 31
+
+scripts.tests.CardDAV.sharing-addressbooks                  
+  Suite: Read-write address book                            
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+    Test: 8                                                       [OK]
+    Test: 9                                                   [FAILED]
+    Test: 10                                                      [OK]
+    Test: 11                                                  [FAILED]
+    Test: 12                                                  [FAILED]
+    Test: 13                                                  [FAILED]
+    Test: 14                                                  [FAILED]
+  Suite: Shared address book cannot be default address      
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+  Suite: Change to read-only address book                   
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                       [OK]
+    Test: 7                                                   [FAILED]
+    Test: 8                                                   [FAILED]
+  Suite: Reshare after sharee DELETE shared addressbook     
+    Test: 0                                                   [FAILED]
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+
+File 3 of 31
+
+scripts.tests.CardDAV.current-user-principal                
+  Suite: Check for the property on /                        
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+  Suite: Check for the property on /principals/             
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+
+File 4 of 31
+
+scripts.tests.CardDAV.directory-gateway                     
+  Suite: Find the gateway                                   
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                       [OK]
+
+File 5 of 31
+
+scripts.tests.CardDAV.sharing-replies                       
+  Suite: Send first reply                                   
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+  Suite: Update reply                                       
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+
+File 6 of 31
+
+scripts.tests.CardDAV.sharing-bulk                          
+  Suite: POST with circular groups                          
+    Test: 0                                                   [FAILED]
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: -1                                                      [OK]
+  Suite: POST with circular groups and one bad reference    
+    Test: 0                                                   [FAILED]
+    Test: 1                                                   [FAILED]
+    Test: 2                                                  [IGNORED]
+    Test: 3                                                  [IGNORED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+  Suite: CRUD POST with circular groups                     
+    Test: 0                                                   [FAILED]
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+  Suite: crud POST with circular groups and one bad reference
+    Test: 0                                                   [FAILED]
+    Test: 1                                                   [FAILED]
+    Test: 2                                                  [IGNORED]
+    Test: 3                                                  [IGNORED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+  Suite: crud POST delete cannot delete (unshare) read-write shared group
+    Test: 0                                                   [FAILED]
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                       [OK]
+    Test: 4                                                   [FAILED]
+
+File 7 of 31
+
+scripts.tests.CardDAV.directory                             
+  Suite: GET on collections                                 
+    Test: 1                                                       [OK]
+    Test: 2                                                       [OK]
+    Test: 3                                                       [OK]
+    Test: 4                                                       [OK]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                       [OK]
+    Test: 7                                                       [OK]
+    Test: 8                                                   [FAILED]
+
+File 8 of 31
+
+scripts.tests.CardDAV.sharing-feature                       
+  Suite: OPTIONS header                                     
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+  Suite: Allowed modes                                      
+    Test: 1                                                   [FAILED]
+  Suite: Upgrade addressbook to shared                      
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+
+File 9 of 31
+
+scripts.tests.CardDAV.get                                   
+  Suite: GET on resource                                    
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+  Suite: GET on collections                                 
+    Test: 1                                                   [FAILED]
+    Test: 2                                                  [IGNORED]
+    Test: 3                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+  Suite: GET on home                                        
+    Test: 1                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                       [OK]
+    Test: 7                                                   [FAILED]
+
+File 10 of 31
+
+scripts.tests.CardDAV.sync-report                           
+  Suite: support-report-set                                 
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+  Suite: simple reports - empty token - no props            
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                       [OK]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+    Test: 8                                                       [OK]
+    Test: 9                                                   [FAILED]
+    Test: 10                                                  [FAILED]
+    Test: 11                                                  [FAILED]
+    Test: 12                                                      [OK]
+    Test: 13                                                  [FAILED]
+    Test: 14                                                  [FAILED]
+    Test: 15                                                  [FAILED]
+  Suite: simple reports - diff token - no props             
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+  Suite: simple reports - empty token - props               
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+  Suite: simple reports - diff token - props                
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+  Suite: simple reports - diff token - no props - home depth:infinity
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+  Suite: simple reports - diff token - props - home depth:infinity
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+  Suite: simple reports - diff token - delete/create addressbook - home depth:infinity [IGNORED]
+
+File 11 of 31
+
+scripts.tests.CardDAV.propfind                              
+  Suite: regular prop finds                                 
+    Test: 1                                                       [OK]
+    Test: 2                                                       [OK]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+  Suite: prop names                                         
+    Test: 1                                                       [OK]
+    Test: 2                                                       [OK]
+    Test: 3                                                   [FAILED]
+  Suite: prop all                                           
+    Test: 1                                                       [OK]
+    Test: 2                                                       [OK]
+    Test: 3                                                   [FAILED]
+  Suite: prop errors                                        
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                       [OK]
+
+File 12 of 31
+
+scripts.tests.CardDAV.default-addressbook                   
+  Suite: Existing property                                  
+    Test: 1                                                   [FAILED]
+  Suite: Change property                                    
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+  Suite: No default delete                                  
+    Test: 2                                                   [FAILED]
+    Test: 3                                                       [OK]
+    Test: 4                                                   [FAILED]
+
+File 13 of 31
+
+scripts.tests.CardDAV.ab-client                             
+  Suite: Account setup                                      
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+  Suite: Polling                                            
+    Test: 1                                                   [FAILED]
+
+File 14 of 31
+
+scripts.tests.CardDAV.errorcondition                        
+  Suite: PUT                                                
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+    Test: 8                                                   [FAILED]
+  Suite: REPORT/addressbook-data                            
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+  Suite: Root resource                                      
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+
+File 15 of 31
+
+scripts.tests.CardDAV.reports                               
+  Suite: basic query reports                                
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+    Test: 8                                                   [FAILED]
+    Test: 9                                                   [FAILED]
+    Test: 10                                                  [FAILED]
+    Test: 11                                                  [FAILED]
+    Test: 12                                                  [FAILED]
+    Test: 13                                                  [FAILED]
+    Test: 14                                                  [FAILED]
+    Test: 15                                                  [FAILED]
+    Test: 16                                                  [FAILED]
+    Test: 17                                                  [FAILED]
+    Test: 18                                                  [FAILED]
+    Test: 19                                                  [FAILED]
+    Test: 20                                                  [FAILED]
+    Test: 21                                                  [FAILED]
+    Test: 22                                                  [FAILED]
+    Test: 23                                                  [FAILED]
+    Test: 24                                                  [FAILED]
+    Test: 25                                                  [FAILED]
+    Test: 26                                                  [FAILED]
+    Test: 27                                                  [FAILED]
+    Test: 28                                                  [FAILED]
+    Test: 29                                                  [FAILED]
+    Test: 30                                                  [FAILED]
+    Test: 31                                                  [FAILED]
+    Test: 32                                                  [FAILED]
+    Test: 33                                                  [FAILED]
+  Suite: multiget reports                                   
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+  Suite: directory gateway query reports                    
+    Test: 1                                                   [FAILED]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+    Test: 8                                                   [FAILED]
+    Test: 9                                                   [FAILED]
+    Test: 10                                                  [FAILED]
+    Test: 11                                                  [FAILED]
+    Test: 12                                                  [FAILED]
+    Test: 13                                                  [FAILED]
+    Test: 14                                                  [FAILED]
+    Test: 15                                                  [FAILED]
+    Test: 16                                                  [FAILED]
+    Test: 17                                                  [FAILED]
+  Suite: directory gateway multiget reports                 
+    Test: 1                                                   [FAILED]
+
+File 16 of 31
+
+scripts.tests.CardDAV.sharing-unshare                       
+  Suite: share addressbook, sharee decline                  
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                       [OK]
+    Test: 7                                                   [FAILED]
+    Test: 8                                                   [FAILED]
+  Suite: reshare addressbook, sharee delete                 
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+    Test: 8                                                   [FAILED]
+  Suite: reshare addressbook, sharee delete addressbook group
+    Test: 1                                                       [OK]
+    Test: 2                                                   [FAILED]
+    Test: 3                                                   [FAILED]
+    Test: 4                                                   [FAILED]
+    Test: 5                                                   [FAILED]
+    Test: 6                                                   [FAILED]
+    Test: 7                                                   [FAILED]
+    Test: 8                                                   [FAILED]
+  Suite: reshare addressbook, sharer uninvite               
+    Test: 1                                                       [O

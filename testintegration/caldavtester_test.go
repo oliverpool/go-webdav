@@ -2,15 +2,17 @@ package caldavtester
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"net"
 	"net/http"
 	"os"
 	"os/exec"
+	"strings"
 	"testing"
 )
 
-func TestServer(t *testing.T) {
+func TestCardDAV(t *testing.T) {
 	ln, err := net.Listen("tcp", "localhost:8008")
 	if err != nil {
 		t.Fatal(err)
@@ -19,12 +21,14 @@ func TestServer(t *testing.T) {
 
 	s := http.Server{
 		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			fmt.Println(r.BasicAuth())
+
 			// TODO: create backend
 		}),
 	}
 	go s.Serve(ln)
 
-	f, err := os.Create("test.log")
+	f, err := os.Create("carddav.log")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -34,14 +38,29 @@ func TestServer(t *testing.T) {
 			t.Fatal(err)
 		}
 	})
-	cmd := exec.Command("nix", "run", "--offline", "--quiet", "../", "--",
+
+	var debug bool
+	for _, a := range os.Args {
+		if strings.HasPrefix(a, "-test.run=") {
+			debug = true
+			break
+		}
+	}
+	args := []string{
+		"run", "--offline", "--quiet", "../", "--",
 		"testcaldav.py",
 		// relative to the ccs-caldavtester folder
 		"-x", "scripts/tests/CardDAV",
 		"-s", "../serverinfo.xml",
-		"--print-details-onfail",
-		"--stop",
-	)
+	}
+	if debug {
+		args = append(args,
+			"--print-details-onfail",
+			"--stop",
+		)
+	}
+
+	cmd := exec.Command("nix", args...)
 	cmd.Dir = "ccs-caldavtester"
 	cmd.Stdout = io.MultiWriter(f, os.Stdout)
 	var stderr bytes.Buffer
