@@ -69,6 +69,11 @@ func (s *Status) Err() error {
 	return nil
 }
 
+type HrefWrapperstruct struct {
+	XMLName xml.Name `xml:"DAV: href"`
+	Href    *Href    `xml:",chardata"`
+}
+
 type Href url.URL
 
 func (h *Href) String() string {
@@ -233,7 +238,7 @@ func (resp *Response) EncodeProp(code int, v interface{}) error {
 // https://tools.ietf.org/html/rfc4918#section-14.9
 type Location struct {
 	XMLName xml.Name `xml:"DAV: location"`
-	Href    Href     `xml:"href"`
+	Href    *Href    `xml:"href"`
 }
 
 // https://tools.ietf.org/html/rfc4918#section-14.22

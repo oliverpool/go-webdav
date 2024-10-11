@@ -161,6 +161,9 @@ func NewPropFindResponse(path string, propfind *PropFind, props map[xml.Name]Pro
 	resp := &Response{Hrefs: []Href{Href{Path: path}}}
 
 	if _, ok := props[ResourceTypeName]; !ok {
+		// rfc4918#15.9
+		// MUST be defined on all DAV-compliant resources.
+		// The default value is empty.
 		props[ResourceTypeName] = func(*RawXMLValue) (interface{}, error) {
 			return NewResourceType(), nil
 		}
@@ -175,6 +178,7 @@ func NewPropFindResponse(path string, propfind *PropFind, props map[xml.Name]Pro
 		}
 	} else if propfind.AllProp != nil {
 		// TODO: add support for propfind.Include
+		// TODO: exclude from properties from allprop. Search for "allprop behavior:"
 		for xmlName, f := range props {
 			emptyVal := NewRawXMLElement(xmlName, nil, nil)
 

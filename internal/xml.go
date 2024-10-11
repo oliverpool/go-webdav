@@ -30,6 +30,9 @@ func NewRawXMLElement(name xml.Name, attr []xml.Attr, children []RawXMLValue) *R
 func EncodeRawXMLElement(v interface{}) (*RawXMLValue, error) {
 	return &RawXMLValue{out: v}, nil
 }
+func EncodeRawXMLElementMust(v interface{}) *RawXMLValue {
+	return &RawXMLValue{out: v}
+}
 
 // UnmarshalXML implements xml.Unmarshaler.
 func (val *RawXMLValue) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

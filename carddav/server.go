@@ -338,6 +338,17 @@ func (b *backend) PropFind(w http.ResponseWriter, r *http.Request, propfind *int
 	var dataReq AddressDataRequest
 	var resps []internal.Response
 
+	// principalPath, err := b.Backend.CurrentUserPrincipal(r.Context())
+	// if err != nil {
+	// 	return err
+	// }
+
+	// globalProps := map[xml.Name]internal.PropFindFunc{
+	// 	internal.CurrentUserPrincipalName: func(*internal.RawXMLValue) (interface{}, error) {
+	// 		return &internal.CurrentUserPrincipal{Href: internal.Href{Path: principalPath}}, nil
+	// 	},
+	// }
+
 	switch resType {
 	case resourceTypeRoot:
 		resp, err := b.propFindRoot(r.Context(), propfind)
@@ -371,8 +382,24 @@ func (b *backend) PropFind(w http.ResponseWriter, r *http.Request, propfind *int
 				}
 			}
 		} else {
-			http.Redirect(w, r, principalPath, http.StatusPermanentRedirect) // keep http method
-			return nil
+			fmt.Printf("### 404 PRINCIPAL (instead of redirect): %#v\n", propfind.Prop)
+
+			resp, err := internal.NewPropFindResponse(r.URL.Path, propfind, b.propFindUserPrincipalProps(r.Context(), propfind, principalPath))
+			if err != nil {
+				return err
+			}
+			resps = append(resps, *resp)
+
+			// resp, err := internal.NewPropFindResponse(r.URL.Path, propfind, map[xml.Name]internal.PropFindFunc{
+			// 	xml.Name{"DAV:", "principal-URL"}: func(raw *internal.RawXMLValue) (interface{}, error) {
+			// 		return nil, &internal.HTTPError{Code: http.StatusForbidden}
+			// 	},
+			// })
+			// if err != nil {
+			// 	return err
+			// }
+			// resps = append(resps, *resp)
+			// resps = append(resps, *internal.NewErrorResponse(principalPath, &internal.HTTPError{Code: http.StatusNotFound}))
 		}
 	case resourceTypeAddressBookHomeSet:
 		homeSetPath, err := b.Backend.AddressBookHomeSetPath(r.Context())
@@ -394,8 +421,8 @@ func (b *backend) PropFind(w http.ResponseWriter, r *http.Request, propfind *int
 				resps = append(resps, resps_...)
 			}
 		} else {
-			http.Redirect(w, r, homeSetPath, http.StatusPermanentRedirect) // keep http method
-			return nil
+			fmt.Println("### 404 (instead of redirect)")
+			resps = append(resps, *internal.NewErrorResponse(homeSetPath, &internal.HTTPError{Code: http.StatusNotFound}))
 		}
 	case resourceTypeAddressBook:
 		ab, err := b.Backend.GetAddressBook(r.Context(), r.URL.Path)
@@ -452,23 +479,26 @@ func (b *backend) propFindUserPrincipal(ctx context.Context, propfind *internal.
 	if err != nil {
 		return nil, err
 	}
-	homeSetPath, err := b.Backend.AddressBookHomeSetPath(ctx)
-	if err != nil {
-		return nil, err
-	}
 
-	props := map[xml.Name]internal.PropFindFunc{
+	return internal.NewPropFindResponse(principalPath, propfind, b.propFindUserPrincipalProps(ctx, propfind, principalPath))
+}
+
+func (b *backend) propFindUserPrincipalProps(ctx context.Context, propfind *internal.PropFind, principalPath string) map[xml.Name]internal.PropFindFunc {
+	return map[xml.Name]internal.PropFindFunc{
 		internal.CurrentUserPrincipalName: func(*internal.RawXMLValue) (interface{}, error) {
 			return &internal.CurrentUserPrincipal{Href: internal.Href{Path: principalPath}}, nil
 		},
 		addressBookHomeSetName: func(*internal.RawXMLValue) (interface{}, error) {
+			homeSetPath, err := b.Backend.AddressBookHomeSetPath(ctx)
+			if err != nil {
+				return nil, err
+			}
 			return &addressbookHomeSet{Href: internal.Href{Path: homeSetPath}}, nil
 		},
 		internal.ResourceTypeName: func(*internal.RawXMLValue) (interface{}, error) {
 			return internal.NewResourceType(internal.CollectionName), nil
 		},
 	}
-	return internal.NewPropFindResponse(principalPath, propfind, props)
 }
 
 func (b *backend) propFindHomeSet(ctx context.Context, propfind *internal.PropFind) (*internal.Response, error) {
