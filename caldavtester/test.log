@@ -6,9 +6,83 @@ scripts.tests.CardDAV.mkcol
   Suite: OPTIONS header                                     
     Test: 1                                                  [IGNORED]
     Test: 2                                                   [FAILED]
+
+-------BEGIN:REQUEST-------
+OPTIONS /addressbooks/__uids__/10000000-0000-0000-0000-000000000001/ HTTP/1.1
+Host: localhost:8008
+Accept-Encoding: identity
+Content-Length: 0
+Authorization: Basic dXNlcjAxOnVzZXIwMQ==
+User-Agent: scripts/tests/CardDAV/mkcol.xml | OPTIONS header | 2 | #1
+
+
+--------END:REQUEST--------
+
+
+-------BEGIN:RESPONSE-------
+HTTP/1.1 200 OK
+Date: Fri, 11 Oct 2024 19:14:44 GMT
+Content-Length: 0
+
+
+--------END:RESPONSE--------
+
     Test: 3                                                   [FAILED]
+
+-------BEGIN:REQUEST-------
+OPTIONS /addressbooks/__uids__/10000000-0000-0000-0000-000000000001/ HTTP/1.1
+Host: localhost:8008
+Accept-Encoding: identity
+Content-Length: 0
+Authorization: Basic dXNlcjAxOnVzZXIwMQ==
+User-Agent: scripts/tests/CardDAV/mkcol.xml | OPTIONS header | 3 | #1
+
+
+--------END:REQUEST--------
+
+
+-------BEGIN:RESPONSE-------
+HTTP/1.1 200 OK
+Date: Fri, 11 Oct 2024 19:14:44 GMT
+Content-Length: 0
+
+
+--------END:RESPONSE--------
+
   Suite: MKCOL with body                                    
     Test: 1                                                   [FAILED]
+
+-------BEGIN:REQUEST-------
+MKCOL /addressbooks/__uids__/10000000-0000-0000-0000-000000000001/adbktest1/ HTTP/1.1
+Host: localhost:8008
+Accept-Encoding: identity
+Content-Length: 362
+Content-Type: text/xml; charset=utf-8
+Authorization: Basic dXNlcjAxOnVzZXIwMQ==
+User-Agent: scripts/tests/CardDAV/mkcol.xml | MKCOL with body | 1 | #1
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:mkcol xmlns:D="DAV:" xmlns:C="urn:ietf:params:xml:ns:carddav">
+<D:set>
+<D:prop>
+<D:resourcetype><D:collection/><C:addressbook/></D:resourcetype>
+<D:displayname>An Address Book</D:displayname>
+<C:addressbook-description xml:lang="en">First CardDAV address book.</C:addressbook-description>
+</D:prop>
+</D:set>
+</D:mkcol>
+
+--------END:REQUEST--------
+
+
+-------BEGIN:RESPONSE-------
+HTTP/1.1 200 OK
+Date: Fri, 11 Oct 2024 19:14:44 GMT
+Content-Length: 0
+
+
+--------END:RESPONSE--------
+
 
 ======================================================================
 [FAILED]

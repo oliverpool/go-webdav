@@ -2,7 +2,6 @@ package caldavtester
 
 import (
 	"bytes"
-	"fmt"
 	"io"
 	"net"
 	"net/http"
@@ -12,7 +11,6 @@ import (
 )
 
 func TestServer(t *testing.T) {
-	// TODO: setup backend and listener
 	ln, err := net.Listen("tcp", "localhost:8008")
 	if err != nil {
 		t.Fatal(err)
@@ -21,8 +19,7 @@ func TestServer(t *testing.T) {
 
 	s := http.Server{
 		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			// t.Log("HIT", r.URL.String())
-			fmt.Println("HIT", r.URL.String())
+			// TODO: create backend
 		}),
 	}
 	go s.Serve(ln)
@@ -42,6 +39,7 @@ func TestServer(t *testing.T) {
 		// relative to the ccs-caldavtester folder
 		"-x", "scripts/tests/CardDAV",
 		"-s", "../serverinfo.xml",
+		"--print-details-onfail",
 		"--stop",
 	)
 	cmd.Dir = "ccs-caldavtester"
